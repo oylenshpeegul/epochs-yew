@@ -1,18 +1,9 @@
 body {
     margin: 8%;
-    /* padding: 5% 0; */
     text-align: center;
     background-color: #aabbcc;
 }
 
-button {
-    background: #eb94d0;
-    border: 2px solid #666666;
-    border-radius: 6px;
-    margin: 2%;
-    padding: 1%;
-}
-    
 .grid-container {
   display: grid;
   grid-template-columns: auto auto;
