@@ -1,7 +1,11 @@
 [package]
 name = "epochs-yew"
 version = "0.1.0"
-authors = ["Tim Heaney <oylenshpeegul@pm.me>"]
+authors = ["Tim Heaney <oylenshpeegul@gmail.com>"]
+description = "A web interface to the epochs crate."
+license = "MIT"
+repository = "https://github.com/oylenshpeegul/epochs-yew"
+readme = "README.org"
 edition = "2018"
 
 [dependencies]
