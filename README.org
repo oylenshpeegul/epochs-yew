@@ -10,4 +10,8 @@ If you clone this repo, you can build it with ~cargo web start~ and then view it
 
 I ran ~cargo web deploy~ and put the results in gh-pages, so you can view it at https://oylenshpeegul.github.io/epochs-yew/
 
+#+CAPTION: Github pages version with 1234567890 filled in.
+[[file:epochs_yew.png]]
+
+
 
