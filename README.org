@@ -2,9 +2,12 @@
 
 This is a little web interface to [[https://crates.io/crates/epochs][the epochs crate]]. 
 
-Run ~cargo web start~ and then view http://127.0.0.1:8000
+Fill in any box on the right hand side and it will try to fill in the rest.
 
-Run ~cargo web deploy~, put the results in gh-pages, and then view https://oylenshpeegul.github.io/epochs-yew/
+It uses [[https://crates.io/crates/yew][yew]] and [[https://crates.io/crates/cargo-web][cargo-web]] to build a little interactive web page with [[https://webassembly.org/][Wasm]].
 
-Now fill in any box on the right hand side and it will try to fill in the rest.
+If you clone this repo, you can build it with ~cargo web start~ and then view it locally at http://127.0.0.1:8000
+
+I ran ~cargo web deploy~ and put the results in gh-pages, so you can view it at https://oylenshpeegul.github.io/epochs-yew/
+
 
