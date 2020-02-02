@@ -19,6 +19,7 @@ pub struct Model {
     mozilla: String,
     symbian: String,
     unix: String,
+    uuid_v1: String,
     windows_date: String,
     windows_file: String,
 }
@@ -36,6 +37,7 @@ pub enum Msg {
     GotMozilla(String),
     GotSymbian(String),
     GotUnix(String),
+    GotUuidV1(String),
     GotWindowsDate(String),
     GotWindowsFile(String),
 }
@@ -54,6 +56,7 @@ fn reset(m: &mut Model) {
     m.mozilla = "".into();
     m.symbian = "".into();
     m.unix = "".into();
+    m.uuid_v1 = "".into();
     m.windows_date = "".into();
     m.windows_file = "".into();
 }
@@ -89,6 +92,9 @@ fn set(m: &mut Model, int: i64) {
     if let Some(ndt) = epochs::unix(int) {
         m.unix = format!("{}", ndt);
     }
+    if let Some(ndt) = epochs::uuid_v1(int) {
+        m.uuid_v1 = format!("{}", ndt);
+    }
     if let Some(ndt) = epochs::windows_date(int) {
         m.windows_date = format!("{}", ndt);
     }
@@ -117,6 +123,7 @@ impl Component for Model {
             mozilla: "".into(),
             symbian: "".into(),
             unix: "".into(),
+            uuid_v1: "".into(),
             windows_date: "".into(),
             windows_file: "".into(),
         }
@@ -181,6 +188,11 @@ impl Component for Model {
             Msg::GotUnix(new_value) => {
                 if let Ok(ndt) = NaiveDateTime::parse_from_str(&new_value, "%Y-%m-%d %H:%M:%S") {
                     set(self, epochs::to_unix(ndt));
+                };
+            }
+            Msg::GotUuidV1(new_value) => {
+                if let Ok(ndt) = NaiveDateTime::parse_from_str(&new_value, "%Y-%m-%d %H:%M:%S") {
+                    set(self, epochs::to_uuid_v1(ndt));
                 };
             }
             Msg::GotWindowsDate(new_value) => {
@@ -289,6 +301,14 @@ impl Component for Model {
                       value={ &self.unix }
                       placeholder="yyyy-mm-dd HH:MM:SS">
                       { &self.unix }
+                    </textarea>
+
+                    <div class="grid-item">{"UUID v1"}</div>
+                    <textarea class="grid-item" rows="1"
+                      oninput=self.link.callback(|e: InputData| Msg::GotUuidV1(e.value))
+                      value={ &self.uuid_v1 }
+                      placeholder="yyyy-mm-dd HH:MM:SS">
+                      { &self.uuid_v1 }
                     </textarea>
 
                     <div class="grid-item">{"Windows Date"}</div>
